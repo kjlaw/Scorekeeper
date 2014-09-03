@@ -16,11 +16,6 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_title" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ScoreActivity"
@@ -37,6 +32,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.kristen.scorekeeper.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Splash"
+            android:label="@string/app_title"
+            android:theme="@android:style/Theme.Light.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 

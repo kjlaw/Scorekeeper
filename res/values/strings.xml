@@ -22,5 +22,7 @@
     <string name="play_again_button_label">PLAY AGAIN!</string>
     <string name="no_serves_display">0%</string>
     <string name="content_desc_background">Ping Pong Background Image</string>
+    <string name="title_activity_splash">Splash</string>
+    <string name="splash_loading_label">Loading...</string>
 
 </resources>
