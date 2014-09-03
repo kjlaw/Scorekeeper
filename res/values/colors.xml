@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_blue">#09306B</color>
+    <color name="light_gray">#BBBBBB</color>
+    <color name="green_button">#459F6D</color>
+    <color name="pressed_green_button">#388058</color>
+    <color name="focused_green_button">#3E8E62</color>
+    <color name="apptheme_color">#459f6d</color>
+</resources>

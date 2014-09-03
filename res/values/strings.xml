@@ -21,5 +21,6 @@
     <string name="serves_won_heading">Serves won:</string>
     <string name="play_again_button_label">PLAY AGAIN!</string>
     <string name="no_serves_display">0%</string>
+    <string name="content_desc_background">Ping Pong Background Image</string>
 
 </resources>
