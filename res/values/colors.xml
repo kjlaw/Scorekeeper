@@ -6,4 +6,7 @@
     <color name="pressed_green_button">#388058</color>
     <color name="focused_green_button">#3E8E62</color>
     <color name="apptheme_color">#459f6d</color>
+    <color name="gray_button">#D5D5D5</color>
+    <color name="pressed_gray_button">#C2C2C2</color>
+    <color name="focused_gray_button">#CCCCCC</color>
 </resources>

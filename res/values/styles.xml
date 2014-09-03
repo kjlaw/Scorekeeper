@@ -4,6 +4,21 @@
 
     <style name="_AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:editTextBackground">@drawable/apptheme_edit_text_holo_light</item>
+        <item name="android:displayOptions">showHome|homeAsUp|showTitle</item>
+        <item name="android:icon">@android:color/transparent</item>
+    </style>
+
+    <style name="Background">
+        <item name="android:background">@drawable/background_fill</item>
+    </style>
+
+    <style name="BackgroundImage">
+        <item name="android:scaleType">fitStart</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:src">@drawable/background</item>
     </style>
 
 </resources>
