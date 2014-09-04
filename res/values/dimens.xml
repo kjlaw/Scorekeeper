@@ -9,4 +9,8 @@
 	<dimen name="score_name_vertical_padding">40dp</dimen>
     <dimen name="score_name_horizontal_margin">26dp</dimen>
     <dimen name="score_horizontal_margin">40dp</dimen>
+    <dimen name="results_vertical_margin">35dp</dimen>
+    <dimen name="results_horizontal_margin">25dp</dimen>
+    <dimen name="box_horizontal_margin">-10dp</dimen>
+    
 </resources>

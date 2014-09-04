@@ -2,6 +2,7 @@ package com.kristen.scorekeeper;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,6 +31,11 @@ public class ResultsActivity extends Activity {
 	protected TextView mPlayer1ServesWon;
 	protected TextView mPlayer2ServesWon;
 	protected Button mPlayAgainButton;
+	protected TextView mWinnerHeading1;
+	protected TextView mWinnerHeading2;
+	
+	protected AspectRatioImageView mPlayer1BoxImage;
+	protected AspectRatioImageView mPlayer2BoxImage;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,12 @@ public class ResultsActivity extends Activity {
 		mPlayer2FinalScore = (TextView) findViewById(R.id.player2FinalScore);
 		mPlayer1ServesWon = (TextView) findViewById(R.id.player1ServesWon);
 		mPlayer2ServesWon = (TextView) findViewById(R.id.player2ServesWon);
+		
+		mWinnerHeading1 = (TextView) findViewById(R.id.player1WinnerHeading);
+		mWinnerHeading2 = (TextView) findViewById(R.id.player2WinnerHeading);
+		
+		mPlayer1BoxImage = (AspectRatioImageView) findViewById(R.id.player1_box_image);
+		mPlayer2BoxImage = (AspectRatioImageView) findViewById(R.id.player2_box_image);
 		
 		if (!player1Name.equals("")) {
 			mPlayer1Heading.setText(player1Name);
@@ -78,5 +90,22 @@ public class ResultsActivity extends Activity {
 			mPlayer2ServesWon.setText(getString(R.string.no_serves_display));
 		}
 		
+		determineWinner();
+	}
+	
+	protected void determineWinner() {
+		if (player1CurrentScore > player2CurrentScore) {
+			mPlayer1Heading.setTypeface(mPlayer1Heading.getTypeface(), Typeface.BOLD);
+			mWinnerHeading1.setVisibility(View.VISIBLE);
+			mPlayer1BoxImage.setImageResource(R.drawable.green_box);
+		}
+		else if (player2CurrentScore > player1CurrentScore) {
+			mPlayer2Heading.setTypeface(mPlayer2Heading.getTypeface(), Typeface.BOLD);
+			mWinnerHeading2.setVisibility(View.VISIBLE);
+			mPlayer2BoxImage.setImageResource(R.drawable.green_box);
+		}
+		else {
+			//Intentionally blank: when there is a tie, default gray box styles apply.
+		}
 	}
 }

@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    style="@style/Background"
     tools:context="com.kristen.scorekeeper.ResultsActivity" >
 
     <ImageView
@@ -10,23 +10,74 @@
         style="@style/BackgroundImage"
         android:contentDescription="@string/content_desc_background" >
     </ImageView>
-    
+
+    <com.kristen.scorekeeper.AspectRatioImageView
+        android:id="@+id/player1_box_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/box_horizontal_margin"
+        android:layout_marginRight="@dimen/box_horizontal_margin"
+        android:layout_marginTop="10dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/gray_box" />
+
+    <com.kristen.scorekeeper.AspectRatioImageView
+        android:id="@+id/player2_box_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/player1_box_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/box_horizontal_margin"
+        android:layout_marginRight="@dimen/box_horizontal_margin"
+        android:layout_marginTop="-30dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/gray_box" />
+
     <LinearLayout
         android:id="@+id/player1Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignTop="@id/player1_box_image"
+        android:layout_marginLeft="@dimen/results_horizontal_margin"
+        android:layout_marginRight="@dimen/results_horizontal_margin"
+        android:layout_marginTop="@dimen/results_vertical_margin"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/player1Heading"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/player1HeadingLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/player1" />
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/player1Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player1"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:layout_weight="3" />
+
+            <TextView
+                android:id="@+id/player1WinnerHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/winner_heading"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/player1ResultsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal" >
 
             <TextView
@@ -34,12 +85,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="@string/starting_score"
+                android:textColor="@color/dark_blue"
+                android:textSize="80sp" />
 
             <LinearLayout
                 android:id="@+id/player1ServesWonLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
@@ -48,12 +103,17 @@
                     android:id="@+id/player1ServesWonHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/serves_won_heading" />
+                    android:text="@string/serves_won_heading"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/player1ServesWon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_serves_display"
+                    android:textColor="@color/medium_blue"
+                    android:textSize="40sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -62,19 +122,45 @@
         android:id="@+id/player2Layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/player1Layout">
+        android:layout_alignTop="@id/player2_box_image"
+        android:layout_marginLeft="@dimen/results_horizontal_margin"
+        android:layout_marginRight="@dimen/results_horizontal_margin"
+        android:layout_marginTop="@dimen/results_vertical_margin"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/player2Heading"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/player2HeadingLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/player2" />
+            android:orientation="horizontal"
+            android:layout_marginLeft="15dp" >
+
+            <TextView
+                android:id="@+id/player2Heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/player2"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
+                android:layout_weight="3" />
+
+            <TextView
+                android:id="@+id/player2WinnerHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/winner_heading"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:visibility="invisible" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/player2ResultsLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:gravity="center_horizontal" >
 
             <TextView
@@ -82,12 +168,16 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:gravity="center" />
+                android:gravity="center"
+                android:text="@string/starting_score"
+                android:textColor="@color/dark_blue"
+                android:textSize="80sp" />
 
             <LinearLayout
                 android:id="@+id/player2ServesWonLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:layout_weight="1"
                 android:gravity="center_horizontal"
                 android:orientation="vertical" >
@@ -96,12 +186,17 @@
                     android:id="@+id/player2ServesWonHeading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/serves_won_heading" />
+                    android:text="@string/serves_won_heading"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/player2ServesWon"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_serves_display"
+                    android:textColor="@color/medium_blue"
+                    android:textSize="40sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -112,6 +207,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/play_again_button_label" />
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:background="@drawable/button_custom"
+        android:text="@string/play_again_button_label"
+        android:textColor="@color/dark_blue"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </RelativeLayout>

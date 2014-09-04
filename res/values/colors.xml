@@ -9,4 +9,5 @@
     <color name="gray_button">#D5D5D5</color>
     <color name="pressed_gray_button">#C2C2C2</color>
     <color name="focused_gray_button">#CCCCCC</color>
+    <color name="medium_blue">#3A60BF</color>
 </resources>

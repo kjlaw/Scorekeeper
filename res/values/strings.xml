@@ -25,5 +25,6 @@
     <string name="title_activity_splash">Splash</string>
     <string name="splash_loading_label">Loading&#8230;</string>
     <string name="content_desc_table">Ping Pong Table Image</string>
+    <string name="winner_heading">WINNER!</string>
 
 </resources>
