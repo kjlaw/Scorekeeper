@@ -23,21 +23,6 @@
         android:adjustViewBounds="true"
         android:src="@drawable/ping_pong_table_left" />
 
-    <ImageView
-        android:id="@+id/score_background_image"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/finishButton"
-        android:layout_below="@id/ping_pong_table"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="-5dp"
-        android:layout_marginBottom="5dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/score_background" >
-    </ImageView>
-
     <LinearLayout
         android:id="@+id/playerServesLayout"
         android:layout_width="match_parent"
@@ -90,99 +75,106 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/scoreLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/playerServesLayout"
-        android:baselineAligned="false"
-        android:orientation="horizontal"
-        android:layout_alignBottom="@id/score_background_image"
-        android:layout_alignTop="@id/score_background_image"
-        android:layout_marginLeft="@dimen/score_horizontal_margin"
-        android:layout_marginRight="@dimen/score_horizontal_margin"
-        android:gravity="center_vertical" >
+        android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/player1ScoreLayout"
+            android:id="@+id/scoreLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/player1UpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/up_button_custom" />
-
-            <TextView
-                android:id="@+id/player1Score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/starting_score"
-                android:textSize="80sp"
-                android:textColor="@color/dark_blue" />
-
-            <Button
-                android:id="@+id/player1DownButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/down_button_custom" />
-        </LinearLayout>
-
-        <com.kristen.scorekeeper.AspectRatioImageView
-            android:id="@+id/vs_circle_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginLeft="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:src="@drawable/vs_circle"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:background="@drawable/score_background"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingBottom="@dimen/score_vertical_padding"
+            android:paddingTop="@dimen/score_vertical_padding" >
 
-        <LinearLayout
-            android:id="@+id/player2ScoreLayout"
+            <LinearLayout
+                android:id="@+id/player1ScoreLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/player1UpButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/score_button_height"
+                    android:background="@drawable/up_button_custom" />
+
+                <TextView
+                    android:id="@+id/player1Score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/starting_score"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="80sp" />
+
+                <Button
+                    android:id="@+id/player1DownButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/score_button_height"
+                    android:background="@drawable/down_button_custom" />
+            </LinearLayout>
+
+            <com.kristen.scorekeeper.AspectRatioImageView
+                android:id="@+id/vs_circle_image"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:src="@drawable/vs_circle" />
+
+            <LinearLayout
+                android:id="@+id/player2ScoreLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:gravity="center_horizontal"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/player2UpButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/score_button_height"
+                    android:background="@drawable/up_button_custom" />
+
+                <TextView
+                    android:id="@+id/player2Score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/starting_score"
+                    android:textColor="@color/dark_blue"
+                    android:textSize="80sp" />
+
+                <Button
+                    android:id="@+id/player2DownButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/score_button_height"
+                    android:background="@drawable/down_button_custom" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/finishButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" >
-
-            <Button
-                android:id="@+id/player2UpButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/up_button_custom" />
-
-            <TextView
-                android:id="@+id/player2Score"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/starting_score"
-                android:textSize="80sp"
-                android:textColor="@color/dark_blue" />
-
-            <Button
-                android:id="@+id/player2DownButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/down_button_custom" />
-        </LinearLayout>
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:background="@drawable/button_custom"
+            android:text="@string/finish_button_label"
+            android:textColor="@color/dark_blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/finishButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:text="@string/finish_button_label"
-        android:textColor="@color/dark_blue"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:background="@drawable/button_custom" />
 
 </RelativeLayout>
