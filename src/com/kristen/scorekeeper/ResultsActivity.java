@@ -3,10 +3,14 @@ package com.kristen.scorekeeper;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class ResultsActivity extends Activity {
@@ -31,11 +35,15 @@ public class ResultsActivity extends Activity {
 	protected TextView mPlayer1ServesWon;
 	protected TextView mPlayer2ServesWon;
 	protected Button mPlayAgainButton;
+
 	protected TextView mWinnerHeading1;
 	protected TextView mWinnerHeading2;
 	
-	protected AspectRatioImageView mPlayer1BoxImage;
-	protected AspectRatioImageView mPlayer2BoxImage;
+	protected LinearLayout mPlayer1HeadingLayout;
+	protected LinearLayout mPlayer2HeadingLayout;
+	protected LinearLayout mPlayer1ResultsLayout;
+	protected LinearLayout mPlayer2ResultsLayout;
+	protected RelativeLayout mGlowBackground;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +61,11 @@ public class ResultsActivity extends Activity {
 		mWinnerHeading1 = (TextView) findViewById(R.id.player1WinnerHeading);
 		mWinnerHeading2 = (TextView) findViewById(R.id.player2WinnerHeading);
 		
-		mPlayer1BoxImage = (AspectRatioImageView) findViewById(R.id.player1_box_image);
-		mPlayer2BoxImage = (AspectRatioImageView) findViewById(R.id.player2_box_image);
+		mPlayer1HeadingLayout = (LinearLayout) findViewById(R.id.player1HeadingLayout);
+		mPlayer2HeadingLayout = (LinearLayout) findViewById(R.id.player2HeadingLayout);
+		mPlayer1ResultsLayout = (LinearLayout) findViewById(R.id.player1ResultsLayout);
+		mPlayer2ResultsLayout = (LinearLayout) findViewById(R.id.player2ResultsLayout);
+		mGlowBackground = (RelativeLayout) findViewById(R.id.glowBackground);
 		
 		if (!player1Name.equals("")) {
 			mPlayer1Heading.setText(player1Name);
@@ -94,15 +105,71 @@ public class ResultsActivity extends Activity {
 	}
 	
 	protected void determineWinner() {
+		
+		GradientDrawable shape = (GradientDrawable) mGlowBackground.getBackground();
+		
+		DisplayMetrics dm = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(dm);
+		
 		if (player1CurrentScore > player2CurrentScore) {
+			
+			//set bold font and show winner font
 			mPlayer1Heading.setTypeface(mPlayer1Heading.getTypeface(), Typeface.BOLD);
 			mWinnerHeading1.setVisibility(View.VISIBLE);
-			mPlayer1BoxImage.setImageResource(R.drawable.green_box);
+			
+			//set heading box and body to green and glow, reformat padding
+			int bottomh = mPlayer1HeadingLayout.getPaddingBottom();
+		    int toph = mPlayer1HeadingLayout.getPaddingTop();
+		    int righth = mPlayer1HeadingLayout.getPaddingRight();
+		    int lefth = mPlayer1HeadingLayout.getPaddingLeft();
+		    
+		    int bottomr = mPlayer1ResultsLayout.getPaddingBottom();
+		    int topr = mPlayer1ResultsLayout.getPaddingTop();
+		    int rightr = mPlayer1ResultsLayout.getPaddingRight();
+		    int leftr = mPlayer1ResultsLayout.getPaddingLeft();
+		    
+			mPlayer1HeadingLayout.setBackgroundResource(R.drawable.green_box_header);
+			mPlayer1ResultsLayout.setBackgroundResource(R.drawable.green_box_body);
+			
+		    mPlayer1HeadingLayout.setPadding(lefth, toph, righth, bottomh);
+		    mPlayer1ResultsLayout.setPadding(leftr, topr, rightr, bottomr);
+			
+			//show gradient and move to top
+			mGlowBackground.setVisibility(View.VISIBLE);
+			shape.setGradientCenter(0.5f, 0.25f);
+			//set size of gradient according to device width
+			int width = dm.widthPixels;
+			shape.setGradientRadius( (float) (width / 1.5));
 		}
 		else if (player2CurrentScore > player1CurrentScore) {
+			
+			//set bold font and show winner font
 			mPlayer2Heading.setTypeface(mPlayer2Heading.getTypeface(), Typeface.BOLD);
 			mWinnerHeading2.setVisibility(View.VISIBLE);
-			mPlayer2BoxImage.setImageResource(R.drawable.green_box);
+			
+			//set heading box and body to green and glow, reformat padding
+			int bottomh = mPlayer2HeadingLayout.getPaddingBottom();
+		    int toph = mPlayer2HeadingLayout.getPaddingTop();
+		    int righth = mPlayer2HeadingLayout.getPaddingRight();
+		    int lefth = mPlayer2HeadingLayout.getPaddingLeft();
+		    
+		    int bottomr = mPlayer2ResultsLayout.getPaddingBottom();
+		    int topr = mPlayer2ResultsLayout.getPaddingTop();
+		    int rightr = mPlayer2ResultsLayout.getPaddingRight();
+		    int leftr = mPlayer2ResultsLayout.getPaddingLeft();
+		    
+			mPlayer2HeadingLayout.setBackgroundResource(R.drawable.green_box_header);
+			mPlayer2ResultsLayout.setBackgroundResource(R.drawable.green_box_body);
+			
+		    mPlayer2HeadingLayout.setPadding(lefth, toph, righth, bottomh);
+		    mPlayer2ResultsLayout.setPadding(leftr, topr, rightr, bottomr);
+			
+			//show gradient and move to top
+			mGlowBackground.setVisibility(View.VISIBLE);
+			shape.setGradientCenter(0.5f, 0.60f);
+			//set size of gradient according to device width
+			int width = dm.widthPixels;
+			shape.setGradientRadius( (float) (width / 1.5));
 		}
 		else {
 			//Intentionally blank: when there is a tie, default gray box styles apply.
